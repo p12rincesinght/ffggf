@@ -22,15 +22,19 @@ for d in soup.find_all('section',id='stream-panel'):
     t1=d.find_all('p',class_='css-1pga48a e15t083i1')
     t2=d.find_all('a')
 
+   
     
     
-for u in range(7):
+for u in range(9):
     arrhead.append(title[u].text)
     arrpara.append(t1[u].text)
-    arrlink.append(t2[u].get('href'))
+    lin =t2[u].get('href')
+     
+    link='https://www.nytimes.com/'+lin
+    arrlink.append(link)
 
 
 
 df=pd.DataFrame({'Titles':arrhead,'Links':arrlink,'Descriptions':arrpara})
-df.to_csv('data.csv',index=False)
+df.to_csv('data132.csv',index=False)
 print(df)
